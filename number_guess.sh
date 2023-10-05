@@ -37,13 +37,15 @@ do
     then
         echo -e "\nThat is not an integer, guess again:"
         read GUESS
-    elif [[ $GUESS < $NUMBER ]]
+    elif [[ $GUESS > $NUMBER ]]
     then
         echo -e "\nIt's lower than that, guess again:"
         read GUESS
-    elif [[ $GUESS > $NUMBER ]]
+    elif [[ $GUESS < $NUMBER ]]
     then
         echo -e "\nIt's higher than that, guess again:"
         read GUESS
     fi
 done
+
+echo -e "\nYou guessed it in $COUNT tries. The secret number was $NUMBER. Nice job!"
