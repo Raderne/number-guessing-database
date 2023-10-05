@@ -2,6 +2,7 @@
 
 PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
 
+COUNT=0
 NUMBER=$(( $RANDOM % 1000 + 1 ))
 echo $NUMBER
 
@@ -29,5 +30,20 @@ read GUESS
 
 until [[ $GUESS == $NUMBER ]]
 do
-    echo got it
+    (( COUNT++ ))
+    echo $COUNT
+
+    if [[ ! $GUESS =~ ^[1-9]+$ ]]
+    then
+        echo -e "\nThat is not an integer, guess again:"
+        read GUESS
+    elif [[ $GUESS < $NUMBER ]]
+    then
+        echo -e "\nIt's lower than that, guess again:"
+        read GUESS
+    elif [[ $GUESS > $NUMBER ]]
+    then
+        echo -e "\nIt's higher than that, guess again:"
+        read GUESS
+    fi
 done
