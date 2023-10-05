@@ -49,3 +49,6 @@ do
 done
 
 echo -e "\nYou guessed it in $COUNT tries. The secret number was $NUMBER. Nice job!"
+
+USERNAME_ID=$($PSQL "select user_id from users where username='$USERNAME';")
+INSERT_GAME_RESULT=$($PSQL "insert into games(best_game, user_id) values($COUNT, $USERNAME_ID);")
