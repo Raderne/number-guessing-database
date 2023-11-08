@@ -9,7 +9,6 @@ echo "Enter your username:"
 read USERNAME
 
 NAME=$($PSQL "select username from users where username='$USERNAME';")
-echo $NAME
 
 if [[ -z $NAME ]]
 then
